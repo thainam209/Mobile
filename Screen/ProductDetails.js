@@ -101,7 +101,9 @@ export default function ProductDetails({ navigation, route }) {
         <TouchableOpacity
           style={styles.addToCartButton}
           onPress={() => {
-            addToCart({ id: product.id, name: product.name, price: product.price });
+            addToCart({ id: product.id, name: product.name, price: product.price, 
+              image: product.images && product.images.length > 0 ? product.images[0].src : null
+             });
             navigation.navigate('ShoppingCart');
           }}
         >

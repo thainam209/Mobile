@@ -6,17 +6,17 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
 
   // Thêm sản phẩm vào giỏ hàng (chỉ cần truyền id, name, price từ ProductDetails)
-  const addToCart = ({ id, name, price }) => {
+  const addToCart = ({ id, name, price, image }) => {
     setCartItems(prev => {
-      const exists = prev.find(item => item.id === id);
-      if (exists) {
+        const exists = prev.find(item => item.id === id);
+        if (exists) {
         return prev.map(item =>
-          item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+            item.id === id ? { ...item, quantity: item.quantity + 1 } : item
         );
-      }
-      return [...prev, { id, name, price, quantity: 1 }];
+        }
+        return [...prev, { id, name, price, image, quantity: 1 }];
     });
-  };
+};
 
   // Xóa sản phẩm khỏi giỏ hàng
   const removeFromCart = (id) => {

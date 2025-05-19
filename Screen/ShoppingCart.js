@@ -3,10 +3,10 @@ import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList } from 'react
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { CartContext } from '../CartContext';
 
-const CartItem = ({ name, price, quantity, onQuantityChange, onRemove }) => (
+const CartItem = ({ name, price, quantity, image, onQuantityChange, onRemove }) => (
   <View style={styles.cartItem}>
     <Image
-      source={require('../assets/icon_image.png')}
+      source={image ? { uri: image } : require('../assets/icon_image.png')}
       style={styles.itemImage}
     />
     <View style={styles.itemDetails}>
@@ -52,6 +52,7 @@ export default function ShoppingCart({ navigation }) {
             name={item.name}
             price={item.price}
             quantity={item.quantity}
+            image={item.image}
             onQuantityChange={(newQuantity) => updateQuantity(item.id, newQuantity)}
             onRemove={() => removeFromCart(item.id)}
           />
