@@ -20,11 +20,13 @@ const AddressItem = ({ type, address, isSelected, onSelect }) => {
   );
 };
 
-export default function Checkout({ navigation }) {
+export default function Checkout({ navigation, route }) {
   const addresses = [
     { id: '1', type: 'Home', address: '36 green way, Sunamganj' },
     { id: '2', type: 'Office', address: 'Medical road, Halal lab, Sunamganj' },
   ];
+
+  const { subtotal } = route.params;
 
   const [selectedAddress, setSelectedAddress] = React.useState(addresses[0].id);
 
@@ -34,7 +36,7 @@ export default function Checkout({ navigation }) {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Icon name="arrow-back" size={24} color="#2A4BA0" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Shopping Cart (5)</Text>
+        <Text style={styles.headerTitle}>Shopping Cart</Text>
         <View style={{ width: 24 }} />
       </View>
       <View style={styles.section}>
@@ -58,7 +60,7 @@ export default function Checkout({ navigation }) {
       </View>
       <TouchableOpacity
         style={styles.addCardButton}
-        onPress={() => navigation.navigate('AddNewCard')}
+        onPress={() => navigation.navigate('AddNewCard', { subtotal })}
       >
         <Text style={styles.addCardText}>Add Card</Text>
       </TouchableOpacity>

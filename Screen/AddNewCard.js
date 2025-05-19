@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default function AddNewCard({ navigation }) {
+export default function AddNewCard({ navigation, route }) {
   const [cardHolder, setCardHolder] = useState('');
   const [cardNumber, setCardNumber] = useState('');
   const [expiry, setExpiry] = useState('');
   const [cvc, setCvc] = useState('');
+
+  const { subtotal } = route.params;
 
   return (
     <View style={styles.container}>
@@ -70,15 +72,15 @@ export default function AddNewCard({ navigation }) {
       <View style={styles.summaryContainer}>
         <View style={styles.summaryRow}>
           <Text style={styles.summaryLabel}>Subtotal</Text>
-          <Text style={styles.summaryValue}>$33.96</Text>
+          <Text style={styles.summaryValue}>{subtotal.toLocaleString()} Vnđ</Text>
         </View>
         <View style={styles.summaryRow}>
           <Text style={styles.summaryLabel}>Delivery</Text>
-          <Text style={styles.summaryValue}>$3.00</Text>
+          <Text style={styles.summaryValue}>10.000 Vnđ</Text>
         </View>
         <View style={styles.summaryRow}>
           <Text style={styles.summaryLabel}>Total</Text>
-          <Text style={styles.summaryValue}>$37.96</Text>
+          <Text style={styles.summaryValue}>{(subtotal + 10000).toLocaleString()} Vnđ</Text>
         </View>
       </View>
 

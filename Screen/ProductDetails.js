@@ -109,9 +109,9 @@ export default function ProductDetails({ navigation, route }) {
         >
           <Text style={styles.buttonText}>Add to Cart</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buyNowButton}>
+        {/* <TouchableOpacity style={styles.buyNowButton}>
           <Text style={styles.buttonText}>Buy Now</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </View>
   );

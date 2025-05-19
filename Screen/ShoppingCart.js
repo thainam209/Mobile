@@ -76,7 +76,7 @@ export default function ShoppingCart({ navigation }) {
         </View>
         <TouchableOpacity
           style={styles.checkoutButton}
-          onPress={() => navigation.navigate('Checkout')}
+          onPress={() => navigation.navigate('Checkout', {subtotal})}
         >
           <Text style={styles.checkoutText}>Proceed to checkout</Text>
         </TouchableOpacity>
